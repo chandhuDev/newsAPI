@@ -14,8 +14,7 @@ const newsapi = new NewsAPI(apiValue)
 app.use("/trending",async(req,res)=>{
 try{
         const newsDetails=await newsapi.v2.topHeadlines({
-        pageSize:5,
-        country:'in',
+         country:'in',
          })
       res.status(200).json({News:newsDetails})
     }
@@ -33,7 +32,6 @@ try{
     const newsDetails=await newsapi.v2.sources({
     language: 'en',
     category:`${type}`,
-    country:'us',
     })
   res.status(200).json({listOfNewsTypes:newsDetails})
   }
@@ -56,8 +54,7 @@ try{
         to: `${to}`,
         language: `en`,
         sortBy: `${sortby}`,
-        pageSize:`5`,
-      })
+        })
     res.status(200).json({searchNews:newsDetails})
 }
 catch(e){
