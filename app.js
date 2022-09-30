@@ -47,12 +47,12 @@ catch(e){
 //is number of results we are trying to fetch
 app.use("/search",async(req,res)=>{
 try{
-    const {type,from,to,sortby}=req.query
+    const {type,from,to,sortby,language}=req.query
     const newsDetails=await newsapi.v2.everything({
         q: `${type}`,
         from: `${from}`,
         to: `${to}`,
-        language: `en`,
+        language: `${language}`,
         sortBy: `${sortby}`,
         })
     res.status(200).json({searchNews:newsDetails})
