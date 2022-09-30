@@ -51,6 +51,7 @@ try{
     const newsDetails=await newsapi.v2.everything({
         q: `${type}`,
         from: `${from}`,
+        searchIn:"title",
         to: `${to}`,
         language: `${language}`,
         sortBy: `${sortby}`,
