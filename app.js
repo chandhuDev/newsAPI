@@ -11,7 +11,7 @@ const newsapi = new NewsAPI(apiValue)
 //Routes for newsAPI
 //It is the route for getting the top trending news in India by passing optional parameters 
 //pageSize and country of news we are going to fetch from this route
-app.use("/topNewsInIndia",async(req,res)=>{
+app.use("/trending",async(req,res)=>{
 try{
         const newsDetails=await newsapi.v2.topHeadlines({
         pageSize:5,
@@ -27,7 +27,7 @@ catch(e){
 
 //It is the route for listing down of different types of news
 //like for Eg: business, entertainment , technology
-app.use("/listOfNewsTypes",async(req,res)=>{
+app.use("/types",async(req,res)=>{
 try{
     const {type}=req.query
     const newsDetails=await newsapi.v2.sources({
@@ -47,15 +47,15 @@ catch(e){
 //It is the route for query filters for the news by passing optional parameters
 //like for Eg: query q i.e type , from and to Date , sortBy and pageSize that 
 //is number of results we are trying to fetch
-app.use("/searchNews",async(req,res)=>{
+app.use("/search",async(req,res)=>{
 try{
-    const {type,from,to,sortBy}=req.query
+    const {type,from,to,sortby}=req.query
     const newsDetails=await newsapi.v2.everything({
         q: `${type}`,
         from: `${from}`,
         to: `${to}`,
         language: `en`,
-        sortBy: `${sortBy}`,
+        sortBy: `${sortby}`,
         pageSize:`5`,
       })
     res.status(200).json({searchNews:newsDetails})
